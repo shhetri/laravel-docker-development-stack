@@ -34,6 +34,7 @@ if hash docker 2>/dev/null; then
 		SYNCING=$(unison ../ socket://localhost:5000/ \
 			-ignore 'Path .git' \
 			-ignore 'Path node_modules' \
+			-ignore 'Path .idea' \
 			-auto -batch 2> /dev/null)
 
 		if hash docker-compose 2>/dev/null; then
@@ -58,6 +59,7 @@ if hash docker 2>/dev/null; then
 				unison ../ socket://localhost:5000/ \
 				-ignore 'Path .git' \
 				-ignore 'Path node_modules' \
+				-ignore 'Path .idea' \
 				-ignore 'Path storage/framework/sessions' \
 				-auto -batch)
 		else
