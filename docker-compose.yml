@@ -4,6 +4,7 @@ services:
         build:
             context: ./
             dockerfile: config/webserver.docker
+        container_name: ${COMPOSE_PROJECT_NAME}_webserver
         volumes:
             - project:/var/www:rw
         ports:
@@ -12,6 +13,7 @@ services:
             - app
     app:
         image: shhetri/laravel-php-alpine:php7
+        container_name: ${COMPOSE_PROJECT_NAME}_app
         volumes:
             - project:/var/www:rw
         links:
@@ -21,6 +23,7 @@ services:
             - "DB_HOST=postgres"
     postgres:
         image: kiasaki/alpine-postgres:9.5
+        container_name: ${COMPOSE_PROJECT_NAME}_postgres
         environment:
             - "POSTGRES_USER=${POSTGRES_USER}"
             - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
