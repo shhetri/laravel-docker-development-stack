@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./env.sh
+
 echo "Stopping all the containers..."
 STOP_COMPOSE=$(docker-compose kill)
 
